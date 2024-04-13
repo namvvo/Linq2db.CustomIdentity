@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Title>Custom Aspnet.Identity using Linq2DB</Title>
+    <Authors>Nam Vo</Authors>
+    <PackageId>Namvvo.$(AssemblyName)</PackageId>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="linq2db" Version="5.4.1" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

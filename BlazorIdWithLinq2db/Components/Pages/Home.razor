@@ -1,0 +1,26 @@
+﻿@page "/"
+@using BlazorIdWithLinq2db.Data
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AspNetUser> UserManager
+@inject RoleManager<AspNetRole> roleManager
+@rendermode InteractiveServer
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+<button @onclick="AddRole">Add role</button>
+@code {
+    async Task AddRole(MouseEventArgs e)
+    {
+        try
+        {
+            var a = await roleManager.RoleExistsAsync("Admin");
+            
+            var user = await UserManager.FindByNameAsync("congthanhgiong@outlook.com");
+            var isInRole = await UserManager.IsInRoleAsync(user, "siteadmin");
+            var addRoleResult = await UserManager.AddToRoleAsync(user, "siteadmin");
+        }
+        catch(Exception ex) { }
+    }
+}
