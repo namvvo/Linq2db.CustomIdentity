@@ -3,6 +3,8 @@ A simple customized asp.net identity with Linq2Db data provider instead of Entit
 How to use:
 
 On Nuget console: install-package namvvo.linq2db.customidentity
+Npm lookup at: https://www.nuget.org/packages/Namvvo.Linq2DB.CustomIdentity/
+
 
 On the Program.cs:
 
