@@ -238,7 +238,7 @@ namespace Linq2DB.CustomIdentity.Data
         }
         private readonly RoleManager<IdentityRole> _roleManager;
 
-       
+
         public async Task<IList<string>> GetRolesAsync(TUser user, CancellationToken cancellationToken)
         {
             using var db = GetConnection();

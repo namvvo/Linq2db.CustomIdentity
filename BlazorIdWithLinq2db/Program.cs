@@ -7,7 +7,7 @@ using Linq2DB.CustomIdentity;
 using Linq2DB.CustomIdentity.Data;
 using Linq2DB.CustomIdentity.DefaultConnectionFactory;
 using LinqToDB.Data;
-
+using Linq2DB.CustomIdentity.DependencyInjection;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 
@@ -25,12 +25,7 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
-builder.Services.AddScoped<IRoleStore<AspNetRole>, CustomRoleStore<AspNetRole>>();
-builder.Services.AddScoped<RoleManager<AspNetRole>>();
 
-builder.Services.AddScoped<UserStore<string, AspNetUser, AspNetRole, AspNetUserRole>>();
-
-builder.Services.AddSingleton<IConnectionFactory, DefaultConnectionFactory>();
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
@@ -45,6 +40,8 @@ builder.Services.AddIdentityCore<AspNetUser>(options => options.SignIn.RequireCo
     .AddRoles<AspNetRole>()
     .AddRoleManager<RoleManager<AspNetRole>>()
     .AddUserStore<UserStore<string, AspNetUser, AspNetRole, AspNetUserRole>>()
+    .AddLinqToDBStores(new DefaultConnectionFactory()) // add DI services for custom identity
+    
     .AddSignInManager()
 
     .AddDefaultTokenProviders();
