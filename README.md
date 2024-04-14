@@ -9,6 +9,7 @@ Npm lookup at: https://www.nuget.org/packages/Namvvo.Linq2DB.CustomIdentity/
 
 
 ## **On the Program.cs:**
+AddLinqToDbStores will automatically inject all the necessary services which includes Factory connection DI, UserStore and Role Store. I'll be adding along more later on.
 
 ```
   builder.Services.AddIdentityCore<AspNetUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -19,4 +20,5 @@ Npm lookup at: https://www.nuget.org/packages/Namvvo.Linq2DB.CustomIdentity/
     .AddSignInManager()
     .AddDefaultTokenProviders();```
 
-AddLinqToDbStores will automatically inject all the necessary services which includes Factory connection DI, UserStore and Role Store. I'll be adding along more later on.
+
+
