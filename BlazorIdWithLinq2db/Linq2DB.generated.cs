@@ -66,8 +66,13 @@ namespace BlazorIdWithLinq2dbModels
     }
 
     [Table(Schema = "dbo", Name = "AspNetRoles")]
-    public partial class AspNetRole: IdentityRole
+    public partial class AspNetRole: IdentityRole<string>
     {
+        public AspNetRole() { }
+        public AspNetRole(string roleName)
+        {
+            Name = roleName;
+        }
         [PrimaryKey, NotNull] public override string Id { get; set; } // nvarchar(450)
         [Column, Nullable] public override string Name { get; set; } // nvarchar(256)
         [Column, Nullable] public override string NormalizedName { get; set; } // nvarchar(256)
